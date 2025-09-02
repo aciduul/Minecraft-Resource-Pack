@@ -1,0 +1,55 @@
+[
+  {
+    "body.ty": "if(limb_speed>0.001, sin(limb_swing*2)*limb_speed, sin(age/8)/6)",
+    "body.rx": "if(limb_speed>0.75, torad(4), torad(2))",
+    "body.rz": "torad(-cos(limb_swing)*limb_speed*4)",
+    "mybody.ry": "-cos(limb_swing+1)*limb_speed/2",
+    "mylegs.ty": "-body.ty",
+    "mylegs.rx": "-body.rx",
+    "quiver.ty": "sin(limb_swing*2)*limb_speed-20"
+  },
+  {
+    "head2.rx": "torad(head_pitch-2)",
+    "head2.ry": "torad(head_yaw)",
+    "head2.ty": "if(limb_speed>0.001, sin(limb_swing*2+1)*limb_speed/1.5, sin(age/8+1)/8)",
+    "head2.rz": "torad(-cos(limb_swing)*limb_speed*2)"
+  },
+  {
+    "arm1.rx": "if(is_aggressive, torad(-90), sin(limb_swing+0.5)*limb_speed)",
+    "arm1.rz": "torad(if(limb_speed>0.75, sin(limb_swing*2)*limb_speed*10+20, sin(age/6)*2+4))",
+    "arm1.ry": "right_arm.ry",
+    "arm2.rx": "if(is_aggressive, torad(-90), -sin(limb_swing+0.5)*limb_speed)",
+    "arm2.rz": "torad(if(limb_speed>0.75, -sin(limb_swing*2)*limb_speed*10-20, -sin(age/6)*2-4))",
+    "arm2.ry": "left_arm.ry"
+  },
+  {
+    "leg1.rx": "sin(limb_swing)*limb_speed",
+    "leg1.ty": "clamp(cos(limb_swing)*limb_speed*5+12, 0, 12)",
+    "leg1.tz": "sin(limb_swing)*limb_speed*2",
+    "leg1.rz": "if(is_aggressive, -sin(limb_swing)*limb_speed, 0)",
+    "leg2.rx": "-sin(limb_swing)*limb_speed",
+    "leg2.ty": "clamp(-cos(limb_swing)*limb_speed*5+12, 0, 12)",
+    "leg2.tz": "-sin(limb_swing)*limb_speed*2",
+    "leg2.rz": "if(is_aggressive, sin(limb_swing)*limb_speed, 0)"
+  },
+  {
+    "left_arm.rx": "arm2.rx",
+    "left_arm.rz": "arm2.rz",
+    "left_arm.ty": "body2.ty+25",
+    "right_arm.rx": "arm1.rx",
+    "right_arm.rz": "arm1.rz",
+    "right_arm.ty": "body2.ty+25",
+    "head.rx": "head2.rx",
+    "head.ry": "head2.ry",
+    "head.rz": "head2.rz",
+    "head.ty": "head2.ty",
+    "left_leg.rx": "leg2.rx",
+    "left_leg.rz": "leg2.rz",
+    "left_leg.ty": "leg2.ty",
+    "left_leg.tz": "leg2.tz",
+    "right_leg.rx": "leg1.rx",
+    "right_leg.rz": "leg1.rz",
+    "right_leg.ty": "leg1.ty",
+    "right_leg.tz": "leg1.tz"
+  }
+]
