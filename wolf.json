@@ -1,0 +1,56 @@
+[
+  {
+    "this.rx": 0
+  },
+  {
+    "body.ty": "if(is_sitting, 19, 14)",
+    "body.rx": "if(limb_speed>=0.78 || is_aggressive, torad(sin(limb_swing+1.5)*limb_speed*8), torad(sin(age/8)/2))",
+    "mybody.rz": "torad(cos(limb_swing+1.5)*limb_speed*6)",
+    "mybody.rx": "if(is_sitting||is_riding, torad(45), pi/2)",
+    "mybody.tz": "if(is_sitting||is_riding, 4, 1)",
+    "mybody.ty": "if(is_sitting||is_riding, -13.5, -14)",
+    "mylegs.rx": "if(is_sitting||is_riding, torad(-45)-body.rx, -body.rx)",
+    "head2.rx": "if(limb_speed>=0.78 || is_aggressive, torad(-sin(limb_swing)*limb_speed*10+head_pitch), torad(head_pitch))",
+    "head2.ry": "torad(clamp(head_yaw, -75, 75))",
+    "head2.ty": "if(is_sitting||is_riding, -19.25, -13.25)",
+    "head2.tz": "if(is_sitting||is_riding, -3, -8)",
+    "mylegs.rz": "-body.rz",
+    "mane2.rx": "if(limb_speed>=0.78 || is_aggressive, torad(cos(limb_swing+1)*limb_speed*7), 0)",
+    "mane2.ry": "torad(-sin(limb_swing+1.5)*limb_speed*6)+mane.rz",
+    "head2.rz": "torad(sin(limb_swing+0.5)*limb_speed)+body.rz/3",
+    "ears.rx": "torad(sin(limb_swing*1.5)*limb_speed*6)"
+  },
+  {
+    "leg5.rx": "if(is_sitting||is_riding, torad(-45), limb_speed>=0.78 || is_aggressive, sin(limb_swing+2)*limb_speed, sin(limb_swing+1.5)*limb_speed/1.5)",
+    "leg5.ty": "if(is_sitting||is_riding, -1.5, limb_speed>=0.78 || is_aggressive, clamp(cos(limb_swing+2)*limb_speed*3-0.5, -3, -0.5), clamp(cos(limb_swing+2)*limb_speed*2-0.5, -2, -0.5))",
+    "leg5.tz": "if(is_sitting||is_riding, 6.5, limb_speed>=0.78 || is_aggressive, cos(limb_swing)*limb_speed+4.5, cos(limb_swing+1)*limb_speed+4.5)",
+    "leg6.rx": "if(is_sitting||is_riding, torad(-45), limb_speed>=0.78 || is_aggressive, -sin(limb_swing+4)*limb_speed, -sin(limb_swing+1.5)*limb_speed/1.5)",
+    "leg6.ty": "if(is_sitting||is_riding, -1.5, limb_speed>=0.78 || is_aggressive, clamp(-cos(limb_swing+4)*limb_speed*3-0.5, -3, -0.5), clamp(-cos(limb_swing+2)*limb_speed*2-0.5, -2, -0.5))",
+    "leg6.tz": "if(is_sitting||is_riding, 6.5, limb_speed>=0.78 || is_aggressive, -cos(limb_swing+2)*limb_speed+4.5, -cos(limb_swing+1)*limb_speed+4.5)",
+    "leg7.rx": "if(is_sitting||is_riding, torad(30), limb_speed>=0.78 || is_aggressive, sin(limb_swing)*limb_speed, sin(limb_swing)*limb_speed/1.5)",
+    "leg7.ty": "if(limb_speed>=0.78 || is_aggressive, clamp(cos(limb_swing+0.5)*limb_speed*3-0.5, -3, -0.5), clamp(cos(limb_swing)*limb_speed*2-0.5, -2, -0.5))",
+    "leg7.tz": "if(limb_speed>=0.78 || is_aggressive, cos(limb_swing-0.5)*limb_speed-5.5, cos(limb_swing-0.5)*limb_speed-5.5)",
+    "leg8.rx": "if(is_sitting||is_riding, torad(30), limb_speed>=0.78 || is_aggressive, -sin(limb_swing+2)*limb_speed, -sin(limb_swing)*limb_speed/1.5)",
+    "leg8.ty": "if(limb_speed>=0.78 || is_aggressive, clamp(-cos(limb_swing+2.5)*limb_speed*3-0.5, -3, -0.5), clamp(-cos(limb_swing)*limb_speed*2-0.5, -2, -0.5))",
+    "leg8.tz": "if(limb_speed>=0.78 || is_aggressive, -cos(limb_swing+1.5)*limb_speed-5.5, -cos(limb_swing-0.5)*limb_speed-5.5)",
+    "tail2.rx": "if(is_sitting||is_riding, torad(35), limb_speed>=0.78 || is_aggressive, sin(limb_swing)*limb_speed/1.75, tail.rx-torad(80))",
+    "tail2.ry": "tail.rz",
+    "tail2.rz": "0.75*tail.ry"
+  },
+  {
+    "var.amount": "if(var.random == 0, lerp(random(), 0.1, 1.1), var.amount)",
+    "var.random": "if(var.random >= 20 || var.counter != 0, 0, var.random + var.amount * frame_time/4)",
+    "var.counter": "if(var.counter >= 1 || var.random != 0, 0, var.counter + 1 * frame_time/4)"
+  },
+  {
+    "head2.rz": "torad(var.counter * sin(age)*40)+(torad(sin(limb_swing+0.5)*limb_speed)+body.rz/3)"
+  },
+  {
+    "var.amount1": "if(var.random1 == 0, lerp(random(), 0.1, 1.1), var.amount1)",
+    "var.random1": "if(var.random1 >= 8 || var.counter1 != 0, 0, var.random1 + var.amount1 * frame_time/2)",
+    "var.counter1": "if(var.counter1 >= 1 || var.random1 != 0, 0, var.counter1 + 1 * frame_time/2)"
+  },
+  {
+    "tail2.ry": "torad(var.counter1 * sin(age)*40)"
+  }
+]
